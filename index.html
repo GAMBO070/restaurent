@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRA Restaurant & Lounge</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-name {
+      color: #881337;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #881337;
+    }
+
+    .btn-reserve {
+      background-color: #881337;
+      color: #ffffff !important;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-reserve:hover {
+      background-color: #9f1239;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 60px 24px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: #ffe4e6;
+      color: #9f1239;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      color: #0f172a;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: #64748b;
+      font-size: 18px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    /* Media Grid */
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      flex: 1 1 300px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .card img, .card video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background-color: #e2e8f0;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-body h3 {
+      font-size: 17px;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .card-body p {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Content Layout Split */
+    .split-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .info-column {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .form-column {
+      flex: 1 1 400px;
+    }
+
+    .panel {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 28px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .panel h2 {
+      font-size: 20px;
+      color: #0f172a;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 12px;
+    }
+
+    .panel p {
+      color: #475569;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .meta-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #94a3b8;
+      margin-bottom: 2px;
+    }
+
+    .meta-value {
+      font-size: 15px;
+      color: #1e293b;
+      font-weight: 500;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 15px;
+      color: #0f172a;
+      background-color: #ffffff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #881337;
+      box-shadow: 0 0 0 3px rgba(136, 19, 55, 0.1);
+    }
+
+    button {
+      width: 100%;
+      background-color: #881337;
+      color: #ffffff;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #9f1239;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      border-top: 1px solid #1e293b;
+      padding: 48px 24px 24px;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      justify-content: space-between;
+    }
+
+    .footer-col {
+      flex: 1 1 200px;
+    }
+
+    .footer-col h4 {
+      color: #ffffff;
+      font-size: 15px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+      .hero {
+        padding: 40px 16px;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href="#home" class="brand-name">GRA Restaurant</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#address">Address</a></li>
+        <li><a href="#contact" class="btn-reserve">Reserve a Table</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main>
+    <!-- Hero Banner -->
+    <section id="home" class="hero">
+      <span class="hero-badge">Fine Dining & Catering</span>
+      <h1>Fresh Flavors, Memorable Moments</h1>
+      <p>Welcome to GRA Restaurant in Zaria. Experience authentic meals, refreshing beverages, and unmatched culinary hospitality.</p>
+    </section>
+
+    <!-- Visual Showcase Section -->
+    <h2 class="section-title">Highlights & Atmosphere</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500" alt="Restaurant interior seating">
+        <div class="card-body">
+          <h3>Comfortable Dining Ambiance</h3>
+          <p>Relax in a calm, modern lounge setting tailored for family dinners and private business sessions.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500" alt="Plated gourmet dishes">
+        <div class="card-body">
+          <h3>Gourmet Dishes</h3>
+          <p>Crafted daily using fresh local ingredients, balanced herbs, and rich traditional seasoning.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <video controls poster="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=500">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="card-body">
+          <h3>Kitchen In Action</h3>
+          <p>Step behind the counter and explore how our signature recipes are carefully assembled and served.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Structured Content Layout -->
+    <div class="split-layout">
+      <!-- Left Column: Details & Info -->
+      <div class="info-column">
+        <section id="about" class="panel">
+          <h2>About Us</h2>
+          <p>GRA Restaurant is committed to quality dining standards. From breakfast staples to rich dinner servings, our team focuses on consistent quality, swift service, and nutritional value for all guests.</p>
+        </section>
+
+        <section id="address" class="panel">
+          <h2>Location & Hours</h2>
+          <ul class="meta-list">
+            <li class="meta-item">
+              <span class="meta-label">Location</span>
+              <span class="meta-value">GRA Western Way, Kaduna - Zaria, Nigeria</span>
+            </li>
+            <li class="meta-item">
+              <span class="meta-label">Phone Support</span>
+              <span class="meta-value">0707363732</span>
+            </li>
+            <li class="meta-item">
+              <span class="meta-label">Email Inquiries</span>
+              <span class="meta-value">gra@resyaurant.com</span>
+            </li>
+            <li class="meta-item">
+              <span class="meta-label">Operating Schedule</span>
+              <span class="meta-value">Monday to Sunday | 8:00 AM – 10:00 PM</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Right Column: Interactive Form -->
+      <div class="form-column">
+        <section id="contact" class="panel">
+          <h2>Table Reservation</h2>
+          <form>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="fullName" placeholder="e.g. Ibrahim Rabiu" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="userEmail" placeholder="e.g. name@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. 0707363732" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Special Requests or Notes</label>
+              <textarea id="message" name="message" rows="4" placeholder="Let us know about guest count or dietary preferences..."></textarea>
+            </div>
+            <button type="submit">Confirm Request</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>GRA Restaurant</h4>
+        <p style="font-size: 14px; line-height: 1.6;">Serving culinary standards and catering services across Zaria.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#address">Address</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <ul>
+          <li><a href="#address">GRA Western Way, Zaria</a></li>
+          <li><a href="tel:0707363732">0707363732</a></li>
+          <li><a href="mailto:gra@resyaurant.com">gra@resyaurant.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 GRA Restaurant & Lounge. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
