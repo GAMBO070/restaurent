@@ -470,7 +470,7 @@
       <div class="form-column">
         <section id="contact" class="panel">
           <h2>Table Reservation</h2>
-          <form>
+          <form onsubmit="sendToWhatsApp(event)">
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="fullName" placeholder="e.g. Ibrahim Rabiu" required>
@@ -526,6 +526,21 @@
       <p>&copy; 2026 GRA Restaurant & Lounge. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const msg = document.getElementById('message').value;
+
+      const text = `*New Table Reservation*\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${msg}`;
+      const ownerNumber = "234707363732";
+
+      window.open(`https://wa.me/${ownerNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+  </script>
 
 </body>
 </html>
