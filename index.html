@@ -151,13 +151,13 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+      transition: transform 0.30s e, box-shadow 0.30s ease;
     }
 
     .card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 px 16px rgba(0, 0, 0, 0.06);
     }
 
     .card img, .card video {
@@ -241,7 +241,7 @@
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.1px;
       color: #94a3b8;
       margin-bottom: 2px;
     }
@@ -278,7 +278,7 @@
 
     input:focus, textarea:focus {
       outline: none;
-      border-color: #881337;
+      border-color: #2b08c7;
       box-shadow: 0 0 0 3px rgba(136, 19, 55, 0.1);
     }
 
@@ -291,7 +291,7 @@
       font-weight: 600;
       border: none;
       border-radius: 6px;
-      cursor: pointer;
+      cursor: progress;
       transition: background-color 0.2s ease;
     }
 
@@ -470,7 +470,7 @@
       <div class="form-column">
         <section id="contact" class="panel">
           <h2>Table Reservation</h2>
-          <form onsubmit="sendToWhatsApp(event)">
+          <form>
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="fullName" placeholder="e.g. Ibrahim Rabiu" required>
@@ -526,21 +526,6 @@
       <p>&copy; 2026 GRA Restaurant & Lounge. All rights reserved.</p>
     </div>
   </footer>
-
-  <script>
-    function sendToWhatsApp(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const msg = document.getElementById('message').value;
-
-      const text = `*New Table Reservation*\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${msg}`;
-      const ownerNumber = "234707363732";
-
-      window.open(`https://wa.me/${ownerNumber}?text=${encodeURIComponent(text)}`, '_blank');
-    }
-  </script>
 
 </body>
 </html>
